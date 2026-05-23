@@ -1,6 +1,11 @@
 .venv/
+venv/
 __pycache__/
 *.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 node_modules/
 dist/
@@ -10,13 +15,18 @@ build/
 .env.*
 
 *.facecat/
-data/
 cache/
 exports/
 *.mp4
 *.mov
 *.avi
 *.mkv
+*.webm
+
+data/
 
 .DS_Store
 Thumbs.db
+
+.claude/settings.local.json
+.codex/config.toml
