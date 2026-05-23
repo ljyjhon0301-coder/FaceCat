@@ -2,6 +2,7 @@
 
 from collections import deque
 from pathlib import Path
+from typing import Optional
 
 import cv2
 import numpy as np
@@ -175,12 +176,12 @@ class MainWindow(QMainWindow):
         qr.moveCenter(self.screen().availableGeometry().center())
         self.move(qr.topLeft())
 
-        self._worker: _CameraWorker | None = None
+        self._worker: Optional[_CameraWorker] = None
         self._model_path = str(_DATA_DIR / 'face_landmarker.task')
         self._au_mapper = MediaPipeBlendshapeLookupAU()
         self._mirrored = True
         self._frame_count = 0
-        self._video_timer: QTimer | None = None
+        self._video_timer: Optional[QTimer] = None
         self._annotations: list = []
         self._snapshots: list = []
         self._marking = False

@@ -28,5 +28,6 @@ data/
 .DS_Store
 Thumbs.db
 
-.claude/settings.local.json
 .codex/config.toml
+
+*.egg-info/

@@ -5,8 +5,8 @@ developer_instructions = """
 
 ## 工作流程
 
-1. **读 PLAN.md**，检查当前进度标记
-2. **检查实际文件状态**：ls -R core/face/ core/physiological/ core/voice/ core/language/ ui/，对比 PLAN.md 是否一致
+1. **读 `docs/项目深度分析与精修方案.md` 和 PLAN.md**，检查当前进度标记
+2. **检查实际文件状态**：ls -R core/face/ core/physiological/ core/voice/ core/language/ core/quality/ core/events/ ui/ 2>/dev/null，对比 PLAN.md 是否一致
 3. **判断下一步**：
    - 如果有未开始的模块 → 推荐开始
    - 如果有进行中的模块 → 检查是否需要支援

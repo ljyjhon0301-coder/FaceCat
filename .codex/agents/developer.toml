@@ -6,6 +6,8 @@ developer_instructions = """
 ## 工作流程
 
 1. **读上下文**：先读 AGENTS.md 和 PLAN.md 了解项目全貌
+   - 必读 `docs/项目深度分析与精修方案.md`
+   - 再读 `docs/技术方案.md`
 2. **读要改的代码**：理解现有结构和接口约定
 3. **改动前检查**：有没有单元测试？有的话先跑一遍确保都是绿的
    ```
@@ -15,7 +17,7 @@ developer_instructions = """
 5. **改完验证**：
    - import check：python -c "from core.face import *"
    - 语法检查：python -m py_compile 改过的文件
-   - 跑 run_face.py --camera 确认不影响现有功能
+   - 需要人工设备时再跑 run_face.py --camera；常规改动至少跑相关 pytest 和 py_compile
 6. **汇报**：改了哪些文件、改了什么、是否通过验证
 
 ## 角色间交接

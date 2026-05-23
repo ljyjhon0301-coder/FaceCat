@@ -1,6 +1,6 @@
 """librosa + parselmouth 语音分析。"""
 
-from typing import Dict
+from typing import Dict, Optional
 
 import numpy as np
 
@@ -50,7 +50,7 @@ class LibrosaVoiceAnalyzer(VoiceAnalyzer):
     @staticmethod
     def _estimate_speech_rate(
             y: np.ndarray, sr: int,
-            voiced: np.ndarray | None) -> float:
+            voiced: Optional[np.ndarray]) -> float:
         onset_env = np.abs(y)
         onset_env = onset_env / (np.max(onset_env) + 1e-8)
         onsets = np.diff(onset_env > np.mean(onset_env) * 0.5)
@@ -65,7 +65,6 @@ class LibrosaVoiceAnalyzer(VoiceAnalyzer):
         try:
             import parselmouth
             snd = parselmouth.Sound(audio_path)
-            pitch = snd.to_pitch()
             pulses = parselmouth.praat.call(snd, "To PointProcess (periodic, cc)", 75, 300)
 
             jitter = parselmouth.praat.call(

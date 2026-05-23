@@ -4,6 +4,8 @@
 
 FaceCat 第一版定位为本地运行的 AI 辅助面部行为视频标注工具。目标是帮助用户更快发现、复核、标注和导出面部行为事件，而不是自动判断真实情绪或测谎。
 
+后续精修以 `docs/项目深度分析与精修方案.md` 为主参考，本文只保留阶段计划和任务拆分。
+
 核心闭环：
 
 ```text
@@ -57,14 +59,21 @@ FaceCat 第一版定位为本地运行的 AI 辅助面部行为视频标注工�
 | 导出 schema 还不含 quality/event/cue 完整字段 | 后续研究和报告使用不够稳 |
 | 文档和代码状态曾不一致 | 已在本轮文档整理中修正 |
 
-## P0: 主仓库与文档整理
+## P0: 文档和 agent 收敛
 
-- 初始化当前目录为 Git 主仓库。
-- 设置 GitHub `ljyjhon0301-coder/FaceCat` 的 `main` 为当前项目主线。
-- 将远端早期研究文档中仍有价值的目标、边界和路线合并进本地文档。
-- 删除远端旧 `docs/*.md` 研究文档，只保留当前项目文档。
+- 新增 `docs/项目深度分析与精修方案.md` 作为后续精修主文档。
+- 合并 agent 入口，只保留 `.codex/agents` 和 `AGENTS.md`。
+- 删除 Claude 侧重复 agent 和 `CLAUDE.md`。
+- 更新 README、PLAN、AGENTS 中的文档引用。
 
 ## P1: 项目文件与质量门控
+
+### 0. 工程基线
+
+- 新增 `pyproject.toml`，统一运行、开发、语音、语言依赖。
+- `pytest` 默认从 `core/` 收集测试。
+- 为 physiological、emotion、cue、voice、language、sync 增加不依赖摄像头和大模型的基础单测。
+- 修正当前代码中 `X | None` 与项目规范冲突的类型注解。
 
 ### 1. `project.facecat/` 文件夹格式
 

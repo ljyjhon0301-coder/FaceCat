@@ -51,13 +51,13 @@ python -m pip install -U pip
 基础运行：
 
 ```bash
-pip install mediapipe numpy opencv-python pyside6 pyqtgraph scipy pytest
+pip install -e ".[dev]"
 ```
 
 语音和语言轨可选依赖：
 
 ```bash
-pip install librosa praat-parselmouth openai-whisper
+pip install -e ".[voice,language]"
 ```
 
 ### 下载模型文件
@@ -124,6 +124,7 @@ FaceCat/
 │   └── timeline_widget.py # pyqtgraph AU 时间线
 ├── data/                  # 本地模型，仓库默认忽略
 ├── docs/
+│   ├── 项目深度分析与精修方案.md
 │   └── 技术方案.md
 ├── run_face.py
 ├── run_ui.py
@@ -142,3 +143,10 @@ FaceCat/
 5. 评测闭环：维护小型 golden set，跟踪候选召回、每分钟误报和标注节省时间。
 
 第一版成功标准不是“情绪分类准确率”，而是减少人工搜片段和标注时间，并让每个候选都有可回放证据、质量上下文和可审计导出。
+
+## 项目文档
+
+- [项目深度分析与精修方案](docs/项目深度分析与精修方案.md)：后续精修主参考，包含 agent、业务、软件、项目架构、完成度和路线图。
+- [技术方案](docs/技术方案.md)：核心技术路线、数据模型、质量门控、候选事件和导出方案。
+- [开发计划](PLAN.md)：阶段拆分和当前优先级。
+- [Agent 说明](AGENTS.md)：Codex agent 工作入口和协作约束。

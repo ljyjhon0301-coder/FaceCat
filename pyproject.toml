@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "facecat"
+version = "0.1.0"
+description = "Local-first facial behavior cue annotation tool."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "mediapipe",
+    "numpy",
+    "opencv-python",
+    "pyside6",
+    "pyqtgraph",
+    "scipy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+voice = [
+    "librosa",
+    "praat-parselmouth",
+]
+language = [
+    "openai-whisper",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["core"]
+python_files = ["test_*.py"]
+addopts = "-q"
+
+[tool.setuptools.packages.find]
+include = ["core*", "ui*"]
+namespaces = true
+
+[tool.ruff]
+line-length = 80
+target-version = "py314"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.isort]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]

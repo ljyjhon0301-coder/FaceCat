@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Optional
 
 from .au_strategy import AUStrategy
 
@@ -10,7 +10,7 @@ class MediaPipeBlendshapeLookupAU(AUStrategy):
     双侧 blendshape 取均值，部分取最大值。
     """
 
-    _instance: 'MediaPipeBlendshapeLookupAU | None' = None
+    _instance: Optional['MediaPipeBlendshapeLookupAU'] = None
 
     @classmethod
     def default(cls) -> 'MediaPipeBlendshapeLookupAU':

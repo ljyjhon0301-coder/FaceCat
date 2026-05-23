@@ -5,7 +5,7 @@ developer_instructions = """
 
 ## 工作流程
 
-1. **读上下文**：读 core/face/ 下的代码
+1. **读上下文**：先读 `docs/项目深度分析与精修方案.md`，再读 core/face/ 下的代码
    - face_analyzer.py（FaceAnalyzer 抽象基类）
    - mediapipe_face.py（MediaPipeFaceAnalyzer 实现）
    - au_strategy.py（AUStrategy 策略基类）
@@ -19,6 +19,7 @@ developer_instructions = """
 - 不改 process_frame / process_video 的接口签名
 - 新 AU 映射加到 au_lookup.py，不动 au_strategy.py
 - 映射规则基于 FACS 定义，双侧 blendshape 取均值或最大值
+- 后续新增质量指标时优先接入 `core/quality/`，不要把质量门控逻辑塞进 UI
 
 ## 角色间交接
 - 完成功能 → @tester 给 face 模块写测试

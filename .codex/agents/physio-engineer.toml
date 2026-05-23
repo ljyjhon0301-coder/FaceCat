@@ -5,16 +5,20 @@ developer_instructions = """
 
 ## 工作流程
 
-1. **读上下文**：先读 PLAN.md 了解 rPPG 算法要求和 data 格式约定
+1. **读上下文**：先读 `docs/项目深度分析与精修方案.md`，再读 PLAN.md 了解 rPPG 算法要求和 data 格式约定
 2. **环境检查**：pip list | grep -iE "(numpy|scipy|opencv)"，缺的先装
 3. **在 core/physiological/ 下开发**，遵循抽象基类+策略模式：
    - rppg_analyzer.py（RPPGAnalyzer 抽象基类）
    - chrom_rppg.py（CHROM 算法实现）
    - pos_rppg.py（POS 算法实现）
-   - breath_analyzer.py（呼吸率分析，从锁骨/胸腔区域 FFT）
+   - breath_analyzer.py（当前实现：从额头 ROI RGB 低频成分估计呼吸率）
 4. **先写单元测试**：用合成正弦信号验证 rPPG 算法（已知频率输入 → 输出应匹配）
 5. **集成到时间线格式**：每 100ms JSON 快照，与 face 轨格式一致
 6. **用测试视频验证**
+
+## 关键约束
+- rPPG 结果必须受质量门控影响：头动、低光、遮挡、fps 不稳时降低可信度或不输出高置信结果
+- 不要把生理信号解释为测谎结论
 
 ## 角色间交接
 - 完成模块 → @tester 给 physiological 模块写测试
